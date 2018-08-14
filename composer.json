@@ -1,0 +1,17 @@
+{
+    "name": "kyuzi/assemblr",
+    "description": "A thingy",
+    "type": "project",
+    "require": {
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.3",
+        "phpdocumentor/phpdocumentor": "2.*"
+    },
+    "authors": [
+        {
+            "name": "kyuzi",
+            "email": "danthemememanxd@gmail.com"
+        }
+    ]
+}
