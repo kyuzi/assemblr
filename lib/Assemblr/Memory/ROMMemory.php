@@ -1,6 +1,9 @@
 <?php
 namespace Assemblr\Memory;
 
+use Assemblr\Exception\MemoryAccessOutOfBoundsException;
+use Assemblr\Exception\ROMMemoryWriteException;
+
 
 class ROMMemory extends Memory {
     /**
@@ -13,16 +16,31 @@ class ROMMemory extends Memory {
         parent::__construct($size);
 
         for ($index = 0; $index < $this->getSize(); $index++) {
-            parent::writeByte($index, $fill);
+            $this->data[$index] = $fill;
         }
+    }
+
+    /**
+     * @param int $index
+     * @return int
+     * @throws MemoryAccessOutOfBoundsException
+     */
+    public function readByte(int $index): int
+    {
+        if (0 <= $index && $index < $this->getSize()) {
+            return $this->data[$index];
+        }
+
+        throw new MemoryAccessOutOfBoundsException();
     }
 
     /**
      * Writing to ROM should panic the interpreter
      * @see Memory::writeByte()
+     * @throws ROMMemoryWriteException
      */
     public function writeByte(int $index, int $value)
     {
-        return;
+        throw new ROMMemoryWriteException();
     }
 }

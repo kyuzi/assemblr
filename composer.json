@@ -13,5 +13,10 @@
             "name": "kyuzi",
             "email": "danthemememanxd@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-0": {
+            "Assemblr": "lib/"
+        }
+    }
 }

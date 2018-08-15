@@ -2,6 +2,8 @@
 namespace Assemblr\Memory;
 
 
+use Assemblr\Exception\MemoryAccessOutOfBoundsException;
+
 abstract class Memory
 {
     /**
@@ -12,7 +14,7 @@ abstract class Memory
     /**
      * @var array Array of bytes with a length of $size
      */
-    private $data;
+    protected $data;
 
     /**
      * @param int $size Size of memory
@@ -34,10 +36,11 @@ abstract class Memory
     /**
      * @param int $index Address of byte you want to read
      * @return int Byte in the given address
+     * @throws MemoryAccessOutOfBoundsException
      */
     public function readByte(int $index): int
     {
-        return 0;
+        throw  new MemoryAccessOutOfBoundsException();
     }
 
     /**
